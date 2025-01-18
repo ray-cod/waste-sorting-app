@@ -1,8 +1,7 @@
 package com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "waste_category")
@@ -11,7 +10,7 @@ public class WasteCategory {
     // Properties
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; // Primary key
 
     @NotBlank(message = "Name is required")
     @Size(max = 50, message = "Name must not exceed 50 characters")
@@ -25,7 +24,8 @@ public class WasteCategory {
     @Column(name = "is_recyclable")
     private Boolean recyclable;
 
-    // Constructor
+
+    // Constructors
     public WasteCategory(Long id, String name, String description, Boolean recyclable) {
         this.id = id;
         this.name = name;
@@ -38,6 +38,7 @@ public class WasteCategory {
         this.description = description;
         this.recyclable = recyclable;
     }
+
 
     // Getters and Setters
     public Long getId() {
@@ -64,7 +65,7 @@ public class WasteCategory {
         this.description = description;
     }
 
-    public Boolean getRecyclable() {
+    public Boolean isRecyclable() {
         return recyclable;
     }
 
