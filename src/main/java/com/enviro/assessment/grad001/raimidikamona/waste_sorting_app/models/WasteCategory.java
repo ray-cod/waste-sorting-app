@@ -26,6 +26,8 @@ public class WasteCategory {
 
 
     // Constructors
+    public WasteCategory(){}
+
     public WasteCategory(Long id, String name, String description, Boolean recyclable) {
         this.id = id;
         this.name = name;

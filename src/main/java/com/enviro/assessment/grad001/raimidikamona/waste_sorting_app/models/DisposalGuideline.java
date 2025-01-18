@@ -33,6 +33,8 @@ public class DisposalGuideline {
 
 
     // Constructors
+    public DisposalGuideline(){}
+
     public DisposalGuideline(Long id, String name, String description, String disposalInstructions, boolean recyclable, WasteCategory wasteCategory) {
         this.id = id;
         this.name = name;
