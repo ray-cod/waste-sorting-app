@@ -25,6 +25,7 @@ public class DisposalGuideline {
     @Size(min = 10, message = "Disposal instructions should be at least 10 characters long")
     private String disposalInstructions;
 
+    @Column(name = "is_recyclable")
     private boolean recyclable;
 
     @ManyToOne(fetch = FetchType.LAZY)
