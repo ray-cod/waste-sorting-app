@@ -1,5 +1,6 @@
 package com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.services;
 
+import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.exceptions.ResourceNotFoundException;
 import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.models.DisposalGuideline;
 import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.repositories.DisposalGuidelineRepository;
 import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.repositories.WasteCategoryRepository;
@@ -37,6 +38,9 @@ public class DisposalGuidelineService {
      * @return an Optional containing the DisposalGuideline if found, or empty otherwise.
      */
     public Optional<DisposalGuideline> getDisposalGuidelineById(Long id) {
+        if(!repository.existsById(id)){
+            throw new ResourceNotFoundException("DisposalGuideline with ID " + id + " not found");
+        }
         return repository.findById(id);
     }
 
@@ -69,7 +73,7 @@ public class DisposalGuidelineService {
                     existingGuideline.setDisposalInstructions(updatedGuideline.getDisposalInstructions());
                     return repository.save(existingGuideline);
                 })
-                .orElseThrow(() -> new RuntimeException("DisposalGuideline with ID " + id + " not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("DisposalGuideline with ID " + id + " not found"));
     }
 
     /**
@@ -78,6 +82,9 @@ public class DisposalGuidelineService {
      * @param id the ID of the DisposalGuideline to delete.
      */
     public void deleteDisposalGuideline(Long id) {
+        if(!repository.existsById(id)){
+            throw new ResourceNotFoundException("DisposalGuideline with ID " + id + " not found");
+        }
         repository.deleteById(id);
     }
 
@@ -99,7 +106,7 @@ public class DisposalGuidelineService {
      */
     private void validateWasteCategoryExists(Long categoryId) {
         if (!wasteCategoryRepository.existsById(categoryId)) {
-            throw new RuntimeException("WasteCategory with ID " + categoryId + " does not exist");
+            throw new ResourceNotFoundException("WasteCategory with ID " + categoryId + " does not exist");
         }
     }
 }

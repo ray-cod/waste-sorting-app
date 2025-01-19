@@ -1,6 +1,7 @@
 package com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.services;
 
 
+import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.exceptions.ResourceNotFoundException;
 import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.models.WasteCategory;
 import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.repositories.WasteCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,9 @@ public class WasteCategoryService {
      * @return an Optional containing the WasteCategory if found, or empty otherwise.
      */
     public Optional<WasteCategory> getWasteCategoryById(Long id) {
+        if(!repository.existsById(id)){
+            throw new ResourceNotFoundException("WasteCategory with ID " + id + " not found");
+        }
         return repository.findById(id);
     }
 
@@ -73,6 +77,9 @@ public class WasteCategoryService {
      * @param id the ID of the WasteCategory to delete.
      */
     public void deleteWasteCategory(Long id) {
+        if(!repository.existsById(id)){
+            throw new ResourceNotFoundException("WasteCategory with ID " + id + " not found");
+        }
         repository.deleteById(id);
     }
 

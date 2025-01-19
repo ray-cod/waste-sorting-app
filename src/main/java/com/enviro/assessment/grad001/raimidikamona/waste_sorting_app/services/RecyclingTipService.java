@@ -1,5 +1,6 @@
 package com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.services;
 
+import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.exceptions.ResourceNotFoundException;
 import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.models.RecyclingTip;
 import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.repositories.RecyclingTipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,9 @@ public class RecyclingTipService {
      * @return an Optional containing the RecyclingTip if found, or empty otherwise.
      */
     public Optional<RecyclingTip> getRecyclingTipById(Long id) {
+        if(!repository.existsById(id)){
+            throw new ResourceNotFoundException("RecyclingTip with ID " + id + " not found");
+        }
         return repository.findById(id);
     }
 
@@ -72,6 +76,9 @@ public class RecyclingTipService {
      * @param id the ID of the RecyclingTip to delete.
      */
     public void deleteRecyclingTip(Long id) {
+        if(!repository.existsById(id)){
+            throw new ResourceNotFoundException("RecyclingTip with ID " + id + " not found");
+        }
         repository.deleteById(id);
     }
 
