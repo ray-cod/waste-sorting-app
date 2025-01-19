@@ -3,5 +3,8 @@ package com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.repositori
 import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.models.RecyclingTip;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RecyclingTipRepositories extends JpaRepository<RecyclingTip, Long>  {
+import java.util.List;
+
+public interface RecyclingTipRepository extends JpaRepository<RecyclingTip, Long>  {
+    List<RecyclingTip> findByApplicableMaterial(String applicableMaterial);
 }

@@ -6,7 +6,5 @@ import org.springframework.data.jpa.repository.*;
 import java.util.List;
 
 public interface WasteCategoryRepository extends JpaRepository<WasteCategory, Long> {
-
-    @Query(value = "SELECT * FROM WASTE_CATEGORY WHERE NAME = :name", nativeQuery = true)
     List<WasteCategory> findByName(String name);
 }

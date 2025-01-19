@@ -2,6 +2,7 @@ package com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.services;
 
 import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.models.DisposalGuideline;
 import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.repositories.DisposalGuidelineRepository;
+import com.enviro.assessment.grad001.raimidikamona.waste_sorting_app.repositories.WasteCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,12 @@ import java.util.Optional;
 public class DisposalGuidelineService {
 
     private final DisposalGuidelineRepository repository;
+    private final WasteCategoryRepository wasteCategoryRepository;
 
     @Autowired
-    public DisposalGuidelineService(DisposalGuidelineRepository repository){
+    public DisposalGuidelineService(DisposalGuidelineRepository repository, WasteCategoryRepository wasteCategoryRepository){
         this.repository = repository;
+        this.wasteCategoryRepository = wasteCategoryRepository;
     }
 
     /**
@@ -44,6 +47,7 @@ public class DisposalGuidelineService {
      * @return the saved DisposalGuideline object.
      */
     public DisposalGuideline createDisposalGuideline(DisposalGuideline guideline) {
+        validateWasteCategoryExists(guideline.getWasteCategory().getId());
         return repository.save(guideline);
     }
 
@@ -56,6 +60,7 @@ public class DisposalGuidelineService {
      * @throws RuntimeException if the guideline is not found.
      */
     public DisposalGuideline updateDisposalGuideline(Long id, DisposalGuideline updatedGuideline) {
+        validateWasteCategoryExists(updatedGuideline.getWasteCategory().getId());
         return repository.findById(id)
                 .map(existingGuideline -> {
                     existingGuideline.setName(updatedGuideline.getName());
@@ -84,5 +89,17 @@ public class DisposalGuidelineService {
      */
     public List<DisposalGuideline> getDisposalGuidelinesByWasteCategory(Long wasteCategoryId) {
         return repository.findByWasteCategoryId(wasteCategoryId);
+    }
+
+    /**
+     * Validate that the given WasteCategory exists.
+     *
+     * @param categoryId the ID if the provided WasteCategory.
+     * @throws RuntimeException if the category doesn't exist.
+     */
+    private void validateWasteCategoryExists(Long categoryId) {
+        if (!wasteCategoryRepository.existsById(categoryId)) {
+            throw new RuntimeException("WasteCategory with ID " + categoryId + " does not exist");
+        }
     }
 }
