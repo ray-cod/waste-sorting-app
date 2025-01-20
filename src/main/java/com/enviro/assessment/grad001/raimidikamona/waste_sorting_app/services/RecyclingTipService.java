@@ -67,7 +67,7 @@ public class RecyclingTipService {
                     existingTip.setExternalLink(updatedTip.getExternalLink());
                     return repository.save(existingTip);
                 })
-                .orElseThrow(() -> new RuntimeException("RecyclingTip with ID " + id + " not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("RecyclingTip with ID " + id + " not found"));
     }
 
     /**

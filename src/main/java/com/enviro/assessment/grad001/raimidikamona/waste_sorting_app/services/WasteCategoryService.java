@@ -68,7 +68,7 @@ public class WasteCategoryService {
                     existingCategory.setRecyclable(updatedCategory.isRecyclable());
                     return repository.save(existingCategory);
                 })
-                .orElseThrow(() -> new RuntimeException("WasteCategory with ID " + id + " not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("WasteCategory with ID " + id + " not found"));
     }
 
     /**
