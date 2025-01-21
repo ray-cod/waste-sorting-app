@@ -37,14 +37,17 @@ The **Waste Sorting App** is a RESTful web application designed to promote prope
    ```bash
    git clone https://github.com/ray-cod/waste-sorting-app.git
    cd waste-sorting-app
+   ```
 
 2. **Build the Application**:
    ```bash
    mvn clean install
+   ```
 
 3. **Run the Application**:
    ```bash
    mvn spring-boot:run
+   ```
 
 4. **Access the API**:
 
@@ -54,24 +57,24 @@ The **Waste Sorting App** is a RESTful web application designed to promote prope
 
 ### Disposal Guidelines
 
-- **Get All Guidelines**: GET /api/disposal-guidelines
-- **Create Guideline**: POST /api/disposal-guidelines
-- **Update Guideline**: PUT /api/disposal-guidelines/{id}
-- **Delete Guideline**: DELETE /api/disposal-guidelines/{id}
-- **Get Guidelines by Category**: GET /api/disposal-guidelines/category/{wasteCategoryId}
+- **Get All Guidelines**: `GET /api/disposal-guidelines`
+- **Create Guideline**: `POST /api/disposal-guidelines`
+- **Update Guideline**: `PUT /api/disposal-guidelines/{id}`
+- **Delete Guideline**: `DELETE /api/disposal-guidelines/{id}`
+- **Get Guidelines by Category**: `GET /api/disposal-guidelines/category/{wasteCategoryId}`
 
 ### Waste Categories
 
-- **Get All Categories**: GET /api/waste-categories
-- **Create Category**: POST /api/waste-categories
-- **Update Category**: PUT /api/waste-categories/{id}
-- **Delete Category**: DELETE /api/waste-categories/{id}
-- **Get Category by Name**: Get /api/waste-categories/search?name=...
+- **Get All Categories**: `GET /api/waste-categories`
+- **Create Category**: `POST /api/waste-categories`
+- **Update Category**: `PUT /api/waste-categories/{id}`
+- **Delete Category**: `DELETE /api/waste-categories/{id}`
+- **Get Categories by Name**: `Get /api/waste-categories/search?name=...`
 
 ### Recycling Tips
 
-- **Get All Tips**: GET /api/recycling-tips
-- **Create Tips**: POST /api/recycling-tips
-- **Update Tips**: PUT /api/recycling-tips/{id}
-- **Delete Tips**: DELETE /api/recycling-tips/{id}
-- **Get Tips by Material**: Get /api/recycling-tips/material/{material}
+- **Get All Tips**: `GET /api/recycling-tips`
+- **Create Tip**: `POST /api/recycling-tips`
+- **Update Tip**: `PUT /api/recycling-tips/{id}`
+- **Delete Tip**: `DELETE /api/recycling-tips/{id}`
+- **Get Tips by Material**: `Get /api/recycling-tips/material/{material}`
