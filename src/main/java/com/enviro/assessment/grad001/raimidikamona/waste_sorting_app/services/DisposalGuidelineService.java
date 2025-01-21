@@ -71,6 +71,7 @@ public class DisposalGuidelineService {
                     existingGuideline.setWasteCategory(updatedGuideline.getWasteCategory());
                     existingGuideline.setDescription(updatedGuideline.getDescription());
                     existingGuideline.setDisposalInstructions(updatedGuideline.getDisposalInstructions());
+                    existingGuideline.setRecyclable(updatedGuideline.isRecyclable());
                     return repository.save(existingGuideline);
                 })
                 .orElseThrow(() -> new ResourceNotFoundException("DisposalGuideline with ID " + id + " not found"));

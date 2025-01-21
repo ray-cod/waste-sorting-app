@@ -60,7 +60,7 @@ class RecyclingTipServiceTest {
     }
 
     @Test
-    void createRecyclingTip() {
+    void testCreateRecyclingTip() {
         // Given
         RecyclingTip tip = new RecyclingTip(
                 "Rinse plastic containers before recycling to remove food residue.",
@@ -78,7 +78,7 @@ class RecyclingTipServiceTest {
     }
 
     @Test
-    void updateRecyclingTip() {
+    void testUpdateRecyclingTip() {
         // Given
         Long id = 1L;
         RecyclingTip existingTip = new RecyclingTip(id,
@@ -103,7 +103,7 @@ class RecyclingTipServiceTest {
     }
 
     @Test
-    void updateNonExistingRecyclingTip() {
+    void testUpdateNonExistingRecyclingTip() {
         // Given
         Long id = 1L;
         RecyclingTip updatedTip = new RecyclingTip(
@@ -125,7 +125,7 @@ class RecyclingTipServiceTest {
     }
 
     @Test
-    void deleteRecyclingTip() {
+    void testDeleteRecyclingTip() {
         // Given
         doNothing().when(repository).deleteById(1L);
         when(repository.existsById(1L)).thenReturn(true);
@@ -138,7 +138,17 @@ class RecyclingTipServiceTest {
     }
 
     @Test
-    void getRecyclingTipsByMaterial() {
+    void testDeleteRecyclingTipWithInvalidId(){
+        assertThrows(ResourceNotFoundException.class,
+                () -> testService.deleteRecyclingTip(1L),
+                "Expected ResourceNotFoundException to be thrown for an invalid ID"
+        );
+
+        verify(repository).existsById(1L);
+    }
+
+    @Test
+    void testGetRecyclingTipsByMaterial() {
         // Given
         RecyclingTip tip = new RecyclingTip(
                 "Rinse plastic containers before recycling to remove food residue.",
