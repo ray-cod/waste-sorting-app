@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/waste_category")
+@RequestMapping("/api/waste-category")
 public class WasteCategoryController {
 
     private final WasteCategoryService service;

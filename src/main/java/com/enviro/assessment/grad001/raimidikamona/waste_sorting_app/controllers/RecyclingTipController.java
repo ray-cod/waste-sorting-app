@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/recycling_tips")
+@RequestMapping(path = "/api/recycling-tips")
 public class RecyclingTipController {
 
     private final RecyclingTipService service;
