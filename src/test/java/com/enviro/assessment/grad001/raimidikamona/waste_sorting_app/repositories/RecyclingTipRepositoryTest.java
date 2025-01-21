@@ -26,7 +26,9 @@ class RecyclingTipRepositoryTest {
     @Test
     void findByApplicableMaterialWithValidMaterial() {
         // Given
-        RecyclingTip tip_1 = new RecyclingTip("Rinse plastic containers before recycling to remove food residue.", "Plastic", "https://www.exampleLink.com/");
+        RecyclingTip tip_1 = new RecyclingTip(
+                "Rinse plastic containers before recycling to remove food residue.",
+                "Plastic", "https://www.exampleLink.com/");
         RecyclingTip savedTip = testRepository.save(tip_1);
 
         // When
@@ -40,7 +42,9 @@ class RecyclingTipRepositoryTest {
     @Test
     void findByApplicableMaterialWithInvalidMaterial() {
         // Given
-        RecyclingTip tip_1 = new RecyclingTip("Rinse plastic containers before recycling to remove food residue.", "Plastic", "https://www.exampleLink.com/");
+        RecyclingTip tip_1 = new RecyclingTip(
+                "Rinse plastic containers before recycling to remove food residue.",
+                "Plastic", "https://www.exampleLink.com/");
         testRepository.save(tip_1);
 
         // When

@@ -32,7 +32,10 @@ class DisposalGuidelineRepositoryTest {
         // Given
         WasteCategory category = new WasteCategory("Organic", "Food waste", true);
         WasteCategory savedCategory = wasteCategoryRepository.save(category);
-        DisposalGuideline guideline_1 = new DisposalGuideline("Composting", "Guide for composting organic materials.", "Place food scraps and yard waste in a compost bin. Avoid including meat, dairy, or oils.", true, savedCategory);
+        DisposalGuideline guideline_1 = new DisposalGuideline("Composting",
+                "Guide for composting organic materials.",
+                "Place food scraps and yard waste in a compost bin. Avoid including meat, dairy, or oils.",
+                true, savedCategory);
         DisposalGuideline savedGuideline = testRepository.save(guideline_1);
 
         // When
@@ -50,7 +53,10 @@ class DisposalGuidelineRepositoryTest {
         WasteCategory savedCategory_1 = wasteCategoryRepository.save(category_1);
         WasteCategory category_2 = new WasteCategory("Plastic", "Recyclable plastic", true);
         WasteCategory savedCategory_2 = wasteCategoryRepository.save(category_2);
-        DisposalGuideline guideline_1 = new DisposalGuideline("Composting", "Guide for composting organic materials.", "Place food scraps and yard waste in a compost bin. Avoid including meat, dairy, or oils.", true, savedCategory_1);
+        DisposalGuideline guideline_1 = new DisposalGuideline("Composting",
+                "Guide for composting organic materials.",
+                "Place food scraps and yard waste in a compost bin. Avoid including meat, dairy, or oils.",
+                true, savedCategory_1);
         DisposalGuideline savedGuideline = testRepository.save(guideline_1);
 
         // When
